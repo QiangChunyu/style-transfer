@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+
+<meta name="generator" content="Jekyll v3.9.0" />
+
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="https://github.com/QiangChunyu/UGM_DEMO" />
+<meta property="og:url" content="https://github.com/QiangChunyu/UGM_DEMO" />
+<meta property="og:site_name" content="KConverter" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cross-Speaker Style Transfer by Strength-Controlled Semi-Supervised style Extractor and Hierarchical Prosody Modeling in Speech Synthesis" />
+<script type="application/ld+json">
+{"url":"https://github.com/QiangChunyu/UGM_DEMO","@type":"WebSite","headline":"Style-Label-Free: Cross-Speaker Style Transfer by Quantized VAE and Speaker-wise Normalization in Speech Synthesis","name":"KConverter","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/KConverter/assets/css/style.css?v=47c45b4a6429e53e24ac0db928295c759205f750">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/KConverter/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <!-- <a id="skip-to-content" href="#content">Skip to the content.</a> -->
+
+    <!-- <header class="page-header" role="banner">
+      <h1 class="project-name"></h1>
+      <h2 class="project-tagline"></h2>
+      
+        <a href="https://github.com/QiangChunyu/UGM_DEMO" class="btn">View on GitHub</a>
+      
+      
+    </header> -->
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="-k-converter-an-unsupervised-singing-voice-conversion-system"><center> Cross-Speaker Style Transfer by Strength-Controlled Semi-Supervised style Extractor and Hierarchical Prosody Modeling in Speech Synthesis</center></h1>
+<center>Chunyu Qiang, Peng Yang, Hao Che, Ying Zhang, Xiaorui Wang, Zhongyuan Wang</center>
+<p><br /></p>
+<center>Kwai, Beijing, P.R. China</center>
+<p><br /></p>
+
+<!-- <h2 id="abstract">Abstract</h2>
+<div style="text-align: justify"> Cross-speaker style transfer in speech synthesis aims at transferring a style from source speaker to synthesised speech of a target speaker's timbre. In most previous methods, the synthetic fine-grained prosody features often represents the average style of the source speaker, similar to the one-to-many problem(i.e., multiple prosody variations correspond to the same text).  In response to this problem, a strength-controlled semi-supervised style extractor is proposed to disentangle the style from content and timbre, while solving the imbalance problem between labeled data and unlabeled data. A hierarchical prosody predictor is proposed to improve prosody modeling. Additionally, a speaker-transfer-wise cycle consistency loss is proposed to assist the model in learning unseen style-timbre combinations during the training phase.  Experimental results show that the method outperforms the baseline. We provide a website with audio samples. </div> -->
+
+<p><br /></p>
+
+<h2 id="model-architecture">Model Architecture</h2>
+<table border="0" align="center">
+  <tbody>
+    <tr>
+      <td><img src="./model_4.png" width="1500" alt="Overall Architecture" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h2 id="comparison-with-baseline-systems">Style Transfer</h2>
+
+<p><strong>Comfort</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Disentangling</th>
+      <th>Bottleneck</th>
+      <th>Proposed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"随缘不是得过且过因循苟且，而是尽人事听天命。"</i></span></td>
+   <tr>
+      <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0315100.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_comfort_center/0315100.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_comfort/0315100.wav" /></audio></td>
+
+    </tr>
+    <tr class="info"><td colspan="4"><span>Target text 2 <i>"没有口水与汗水就没有成功的泪水。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0315358.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_comfort_center/0315358.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_comfort/0315358.wav" /></audio></td>
+      </tr>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"随缘不是得过且过因循苟且，而是尽人事听天命。"</i></span></td>
+      <tr>
+         <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0315100.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_comfort_center/0315100.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_comfort/0315100.wav" /></audio></td>
+   
+       </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"没有口水与汗水就没有成功的泪水。"</i></span></td>
+        <tr>
+          <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0315358.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_comfort_center/0315358.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_comfort/0315358.wav" /></audio></td>
+        </tr>
+       
+
+  </tbody>
+</table>
+<hr />
+
+
+<p><strong>Happy</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Disentangling</th>
+      <th>Bottleneck</th>
+      <th>Proposed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>想到这我躲在被窝里偷偷的笑出了声来。"</i></span></td>
+   <tr>
+      <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0316086.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_happy_center/0316086.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_happy/0316086.wav" /></audio></td>
+
+    </tr>
+    <tr class="info"><td colspan="4"><span>Target text 2 <i>"看到这情景，我乐在地上翻了个跟头。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0316094.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_happy_center/0316094.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_happy/0316094.wav" /></audio></td>
+      </tr>
+      <tr class="info"><td colspan="4"><span>Target text 1 <i>想到这我躲在被窝里偷偷的笑出了声来。"</i></span></td>
+        <tr>
+           <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0316086.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_happy_center/0316086.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_happy/0316086.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"看到这情景，我乐在地上翻了个跟头。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0316094.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_happy_center/0316094.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_happy/0316094.wav" /></audio></td>
+      </tr>
+       
+
+  </tbody>
+</table>
+<hr />
+
+<p><strong>Sad</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Disentangling</th>
+      <th>Bottleneck</th>
+      <th>Proposed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>他们没有过上一个好年，真是太悲催了。"</i></span></td>
+   <tr>
+      <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0319200.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_sad_center/0319200.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_sad/0319200.wav" /></audio></td>
+
+    </tr>
+    <tr class="info"><td colspan="4"><span>Target text 2 <i>"你太强大了，我都要被你活活折腾死了。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0319229.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_sad_center/0319229.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_sad/0319229.wav" /></audio></td>
+      </tr>
+      <tr class="info"><td colspan="4"><span>Target text 1 <i>他们没有过上一个好年，真是太悲催了。"</i></span></td>
+        <tr>
+           <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0319200.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_sad_center/0319200.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_sad/0319200.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"你太强大了，我都要被你活活折腾死了。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0319229.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_sad_center/0319229.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_sad/0319229.wav" /></audio></td>
+      </tr>
+       
+
+  </tbody>
+</table>
+<hr />
+
+<p><strong>Surprised</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Disentangling</th>
+      <th>Bottleneck</th>
+      <th>Proposed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>这里到底发生了什么，回答我啊。"</i></span></td>
+   <tr>
+      <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0318037.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_surprised_center/0318037.wav" /></audio></td>
+      <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_surprised/0318037.wav" /></audio></td>
+
+    </tr>
+    <tr class="info"><td colspan="4"><span>Target text 2 <i>"啊？你竟然对他不尊重到了这种地步。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_7/0318187.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_7/emotion_surprised_center/0318187.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_7/emotion_surprised/0318187.wav" /></audio></td>
+      </tr>
+      <tr class="info"><td colspan="4"><span>Target text 1 <i>这里到底发生了什么，回答我啊。"</i></span></td>
+        <tr>
+           <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0318037.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_surprised_center/0318037.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_surprised/0318037.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"啊？你竟然对他不尊重到了这种地步。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Disentangling/spk_15/0318187.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Bottleneck/spk_15/emotion_surprised_center/0318187.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/Proposed/spk_15/emotion_surprised/0318187.wav" /></audio></td>
+      </tr>
+       
+
+  </tbody>
+</table>
+<hr />
+
+
+<h2 id="ablation">Style Strength Control</h2>
+
+<table border="0" align="center">
+  <tbody>
+    <tr>
+      <td><img src="./prosody_scale_1.png" width="1500" style='text-align:center' alt="Prosody features predicted by scaling global style embedding(The abscissa represents the phoneme length)." /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Comfort</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Scale = 0.5</th>
+      <th>Scale = 1.25</th>
+      <th>Scale = 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"随缘不是得过且过因循苟且，而是尽人事听天命。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+        <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/0.5/0315100.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/1.25/0315100.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/2/0315100.wav" /></audio></td>
+   
+       </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"没有口水与汗水就没有成功的泪水。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/0.5/0315358.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/1.25/0315358.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/comfort/2/0315358.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 1 <i>"随缘不是得过且过因循苟且，而是尽人事听天命。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/0.5/0315100.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/1.25/0315100.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/2/0315100.wav" /></audio></td>
+      
+          </tr>
+          
+          <tr class="info"><td colspan="4"><span>Target text 2 <i>"没有口水与汗水就没有成功的泪水。"</i></span></td>
+           <tr>
+            <td><audio controls="" preload="auto"><source src="wav/comfort.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/0.5/0315358.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/1.25/0315358.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/comfort/2/0315358.wav" /></audio></td>
+           </tr>
+  </tbody>
+</table>
+<hr />
+
+<p><strong>Happy</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Scale = 0.5</th>
+      <th>Scale = 1.25</th>
+      <th>Scale = 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"想到这我躲在被窝里偷偷的笑出了声来。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/0.5/0316086.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/1.25/0316086.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/2/0316086.wav" /></audio></td>
+   
+       </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"看到这情景，我乐在地上翻了个跟头。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/0.5/0316094.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/1.25/0316094.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/happy/2/0316094.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 1 <i>"想到这我躲在被窝里偷偷的笑出了声来。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/0.5/0316086.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/1.25/0316086.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/2/0316086.wav" /></audio></td>
+      
+          </tr>
+          <tr class="info"><td colspan="4"><span>Target text 2 <i>"看到这情景，我乐在地上翻了个跟头。"</i></span></td>
+           <tr>
+            <td><audio controls="" preload="auto"><source src="wav/happy.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/0.5/0316094.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/1.25/0316094.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/happy/2/0316094.wav" /></audio></td>
+           </tr>
+  </tbody>
+</table>
+<hr />
+
+<p><strong>Sad</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Scale = 0.5</th>
+      <th>Scale = 1.25</th>
+      <th>Scale = 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"他们没有过上一个好年，真是太悲催了。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/0.5/0319200.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/1.25/0319200.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/2/0319200.wav" /></audio></td>
+   
+       </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"你太强大了，我都要被你活活折腾死了。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/0.5/0319229.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/1.25/0319229.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/sad/2/0319229.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 1 <i>"他们没有过上一个好年，真是太悲催了。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/0.5/0319200.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/1.25/0319200.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/2/0319200.wav" /></audio></td>
+      
+          </tr>
+          <tr class="info"><td colspan="4"><span>Target text 2 <i>"你太强大了，我都要被你活活折腾死了。"</i></span></td>
+           <tr>
+            <td><audio controls="" preload="auto"><source src="wav/sad.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/0.5/0319229.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/1.25/0319229.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/sad/2/0319229.wav" /></audio></td>
+           </tr>
+  </tbody>
+</table>
+<hr />
+
+<p><strong>Surprised</strong></p>
+<table align="center">
+  <thead>
+    <tr>
+      <th>Source Speaker</th>
+      <th>Target Speaker</th>
+      <th>Scale = 0.5</th>
+      <th>Scale = 1.25</th>
+      <th>Scale = 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info"><td colspan="4"><span>Target text 1 <i>"这里到底发生了什么，回答我啊。"</i></span></td>
+      <tr>
+        <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/0.5/0318037.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/1.25/0318037.wav" /></audio></td>
+         <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/2/0318037.wav" /></audio></td>
+   
+       </tr>
+       <tr class="info"><td colspan="4"><span>Target text 2 <i>"啊？你竟然对他不尊重到了这种地步。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk7.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/0.5/0318187.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/1.25/0318187.wav" /></audio></td>
+           <td><audio controls="" preload="auto"><source src="wav/Scale/spk7/surprised/2/0318187.wav" /></audio></td>
+         </tr>
+       <tr class="info"><td colspan="4"><span>Target text 1 <i>"这里到底发生了什么，回答我啊。"</i></span></td>
+         <tr>
+          <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/0.5/0318037.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/1.25/0318037.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/2/0318037.wav" /></audio></td>
+      
+          </tr>
+          <tr class="info"><td colspan="4"><span>Target text 2 <i>"啊？你竟然对他不尊重到了这种地步。"</i></span></td>
+           <tr>
+            <td><audio controls="" preload="auto"><source src="wav/surprised.wav" /></audio></td>
+          <td><audio controls="" preload="auto"><source src="wav/spk15.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/0.5/0318187.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/1.25/0318187.wav" /></audio></td>
+            <td><audio controls="" preload="auto"><source src="wav/Scale/spk15/surprised/2/0318187.wav" /></audio></td>
+           </tr>
+  </tbody>
+</table>
+<hr />
+
+
+<hr />
+
+
+
+
+      <footer class="site-footer">
+        
+      
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>
